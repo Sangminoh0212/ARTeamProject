@@ -53,9 +53,11 @@ public class MonsterManager : MonoBehaviour
             //When there is no monster.
             if (!isSpawned && planeManager.trackables.count > 0 && isPlaying)
             {
+                // set random number in range of trackables.count
                 int RandomNum = Random.Range(0, planeManager.trackables.count);
                 int count = 0;
-
+                
+                // find random plane that is match with randomNum
                 foreach (ARPlane plane in planeManager.trackables)
                 {
                     if (count == RandomNum)
@@ -65,7 +67,7 @@ public class MonsterManager : MonoBehaviour
                     count++;
                 }
 
-                
+                // if random plane and camera(user) have proper distance, instantiate monster
                 if (Vector3.Distance(selectedPlane.transform.position, Camera.main.transform.position) >= 2.0f)
                 {
                     monsterPosition = selectedPlane.transform.position;
